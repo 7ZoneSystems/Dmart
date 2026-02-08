@@ -12,7 +12,6 @@ body {
     background: linear-gradient(135deg,#e8f0ff,#f7f9fc);
 }
 
-/* Header */
 header {
     text-align: center;
     padding: 25px;
@@ -20,60 +19,71 @@ header {
     font-weight: 600;
     color: white;
     background: linear-gradient(90deg,#1f2937,#111827);
-    letter-spacing: 1px;
 }
 
-/* Container */
-.container {
-    max-width: 1300px;
-    margin: auto;
-}
+/* gallery */
+.container { max-width:1300px; margin:auto; }
+.gallery { column-count:4; column-gap:18px; padding:25px; }
 
-/* Masonry layout */
-.gallery {
-    column-count: 4;
-    column-gap: 18px;
-    padding: 25px;
-}
-
-/* Card */
 .card {
     position: relative;
-    margin-bottom: 18px;
-    overflow: hidden;
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-    background: rgba(255,255,255,0.55);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    margin-bottom:18px;
+    border-radius:16px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
-/* Image */
 .card img {
-    width: 100%;
-    display: block;
-    transition: transform .35s ease;
+    width:100%;
+    cursor:pointer;
+    transition: transform .35s;
 }
+.card:hover img { transform:scale(1.05); }
 
-/* Hover zoom */
-.card:hover img {
-    transform: scale(1.07);
-}
-
-/* Title overlay */
 .caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px;
-    background: linear-gradient(transparent,rgba(0,0,0,0.7));
-    color: white;
-    font-size: 14px;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:10px;
+    color:white;
+    background:linear-gradient(transparent,rgba(0,0,0,.7));
 }
 
-/* Responsive */
-@media (max-width:1000px){ .gallery{ column-count:3; } }
-@media (max-width:700px){ .gallery{ column-count:2; } }
-@media (max-width:500px){ .gallery{ column-count:1; } }
+/* lightbox modal */
+#viewer {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+#viewer img {
+    max-width:90%;
+    max-height:90%;
+    border-radius:12px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+}
+
+#closeBtn {
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+/* responsive */
+@media(max-width:1000px){ .gallery{ column-count:3; } }
+@media(max-width:700px){ .gallery{ column-count:2; } }
+@media(max-width:500px){ .gallery{ column-count:1; } }
 
 </style>
 </head>
@@ -85,25 +95,34 @@ header {
 <div class="container">
 <div class="gallery">
 
-<div class="card">
-<img src="Dmart_full.png">
-<div class="caption">Dmart Full</div>
-</div>
-
-<div class="card"><img src="newplot10.png"><div class="caption">Plot 10</div></div>
-<div class="card"><img src="newplot11.png"><div class="caption">Plot 11</div></div>
-<div class="card"><img src="newplot12.png"><div class="caption">Plot 12</div></div>
-<div class="card"><img src="newplot13.png"><div class="caption">Plot 14</div></div>
-<div class="card"><img src="newplot14.png"><div class="caption">Plot 15</div></div>
-<div class="card"><img src="newplot15.png"><div class="caption">Plot 16</div></div>
-<div class="card"><img src="newplot16.png"><div class="caption">Plot 17</div></div>
-<div class="card"><img src="newplot17.png"><div class="caption">Plot 18</div></div>
-<div class="card"><img src="newplot21.png"><div class="caption">Plot 19</div></div>
-<div class="card"><img src="newplot19.png"><div class="caption">Plot 20</div></div>
-<div class="card"><img src="newplot20.png"><div class="caption">Plot 21</div></div>
+<div class="card"><img src="Dmart_full.png" onclick="openImg(this.src)"><div class="caption">Dmart Full</div></div>
+<div class="card"><img src="newplot10.png" onclick="openImg(this.src)"><div class="caption">Plot 10</div></div>
+<div class="card"><img src="newplot11.png" onclick="openImg(this.src)"><div class="caption">Plot 11</div></div>
+<div class="card"><img src="newplot12.png" onclick="openImg(this.src)"><div class="caption">Plot 12</div></div>
+<div class="card"><img src="newplot13.png" onclick="openImg(this.src)"><div class="caption">Plot 13</div></div>
+<div class="card"><img src="newplot14.png" onclick="openImg(this.src)"><div class="caption">Plot 14</div></div>
+<div class="card"><img src="newplot15.png" onclick="openImg(this.src)"><div class="caption">Plot 15</div></div>
+<div class="card"><img src="newplot16.png" onclick="openImg(this.src)"><div class="caption">Plot 16</div></div>
+<div class="card"><img src="newplot17.png" onclick="openImg(this.src)"><div class="caption">Plot 17</div></div>
 
 </div>
 </div>
+
+<!-- Lightbox viewer -->
+<div id="viewer" onclick="closeImg()">
+    <span id="closeBtn">&times;</span>
+    <img id="viewerImg">
+</div>
+
+<script>
+function openImg(src){
+    document.getElementById("viewer").style.display="flex";
+    document.getElementById("viewerImg").src=src;
+}
+function closeImg(){
+    document.getElementById("viewer").style.display="none";
+}
+</script>
 
 </body>
 </html>
