@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg,#e8f0ff,#f7f9fc);
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 25px;
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(90deg,#1f2937,#111827);
+    letter-spacing: 1px;
+}
+
+/* Container */
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+/* Masonry layout */
+.gallery {
+    column-count: 4;
+    column-gap: 18px;
+    padding: 25px;
+}
+
+/* Card */
+.card {
+    position: relative;
+    margin-bottom: 18px;
+    overflow: hidden;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.55);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.card img {
+    width: 100%;
+    display: block;
+    transition: transform .35s ease;
+}
+
+/* Hover zoom */
+.card:hover img {
+    transform: scale(1.07);
+}
+
+/* Title overlay */
+.caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(transparent,rgba(0,0,0,0.7));
+    color: white;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width:1000px){ .gallery{ column-count:3; } }
+@media (max-width:700px){ .gallery{ column-count:2; } }
+@media (max-width:500px){ .gallery{ column-count:1; } }
+
+</style>
+</head>
+
+<body>
+
+<header>📊 Project Image Gallery</header>
+
+<div class="container">
+<div class="gallery">
+
+<div class="card">
+<img src="Dmart_full.png">
+<div class="caption">Dmart Full</div>
+</div>
+
+<div class="card"><img src="newplot(10).png"><div class="caption">Plot 10</div></div>
+<div class="card"><img src="newplot(11).png"><div class="caption">Plot 11</div></div>
+<div class="card"><img src="newplot(12).png"><div class="caption">Plot 12</div></div>
+<div class="card"><img src="newplot(14).png"><div class="caption">Plot 14</div></div>
+<div class="card"><img src="newplot(15).png"><div class="caption">Plot 15</div></div>
+<div class="card"><img src="newplot(16).png"><div class="caption">Plot 16</div></div>
+<div class="card"><img src="newplot(17).png"><div class="caption">Plot 17</div></div>
+<div class="card"><img src="newplot(18).png"><div class="caption">Plot 18</div></div>
+<div class="card"><img src="newplot(19).png"><div class="caption">Plot 19</div></div>
+<div class="card"><img src="newplot(20).png"><div class="caption">Plot 20</div></div>
+<div class="card"><img src="newplot(21).png"><div class="caption">Plot 21</div></div>
+
+</div>
+</div>
+
+</body>
+</html>
